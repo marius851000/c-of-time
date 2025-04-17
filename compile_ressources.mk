@@ -1,0 +1,36 @@
+# run with make -f compile_ressources.mk (while in the project root’s folder)
+# must have a "rom_true_base.nds" present in the root folder, which will generate "rom.nds"
+
+# compile some ressources into the rom (separated from main Makefile as it need some python dependancies and allow to manage some files without having to spoil them on this repo)
+
+# the magic nix command (for those who use it) to get the dep is nix-shell -p python3Packages.skytemple-files -p python3Packages.pillow -p python3Packages.svgelements -p python3Packages.scipy -p cargo
+ROM_IN := rom_true_base.nds
+ROM_DEST := build_ressources/rom_with_ressource.nds
+
+all: $(ROM_DEST)
+
+VRAM_SRC = $(wildcard fs_patch_source/vram/*.png)
+VRAM_DEST = $(patsubst fs_patch_source/vram/%.png,build_ressources/fs_patch_temp/CUSTOM/VRAM/%.wte,$(VRAM_SRC))
+
+build_ressources/fs_patch_temp/CUSTOM/VRAM/%.wte: fs_patch_source/vram/%.png tool/wte_convert/convert.py
+	mkdir -p build_ressources/fs_patch_temp/CUSTOM/VRAM
+	python3 tool/wte_convert/convert.py $< $@
+
+MODEL_SRC = $(wildcard fs_patch_source/model/*.obj)
+MODEL_DEST = $(patsubst fs_patch_source/model/%.obj,build_ressources/fs_patch_temp/CUSTOM/MODEL/%.fifo,$(MODEL_SRC))
+
+build_ressources/fs_patch_temp/CUSTOM/MODEL/%.fifo: fs_patch_source/model/%.obj tool/model_convert/Cargo.toml tool/model_convert/Cargo.lock tool/model_convert/src/main.rs
+	mkdir -p build_ressources/fs_patch_temp/CUSTOM/MODEL
+	cargo run --manifest-path ./tool/model_convert/Cargo.toml -- $< $@
+
+FS_PATCH_TEMP_INPUT = $(VRAM_DEST) $(MODEL_DEST) $(ROM_IN)
+
+$(ROM_DEST): $(FS_PATCH_TEMP_INPUT)
+	@rm -rf build_ressources/temp_rom_folder
+	mkdir -p build_ressources/temp_rom_folder
+	ndstool -x $(ROM_IN) -9 build_ressources/temp_rom_folder/arm9.bin -7 build_ressources/temp_rom_folder/arm7.bin -y9 build_ressources/temp_rom_folder/y9.bin -y7 build_ressources/temp_rom_folder/y7.bin -d build_ressources/temp_rom_folder/data -y build_ressources/temp_rom_folder/overlay -t build_ressources/temp_rom_folder/banner.bin -h build_ressources/temp_rom_folder/header.bin
+	cp -r build_ressources/fs_patch_temp/* build_ressources/temp_rom_folder/data/
+	ndstool -c $(ROM_DEST) -9 build_ressources/temp_rom_folder/arm9.bin -7 build_ressources/temp_rom_folder/arm7.bin -y9 build_ressources/temp_rom_folder/y9.bin -y7 build_ressources/temp_rom_folder/y7.bin -d build_ressources/temp_rom_folder/data -y build_ressources/temp_rom_folder/overlay -t build_ressources/temp_rom_folder/banner.bin -h $(ROM_IN) -r9 0x2000000 -e9 0x2000800 -r7 0x2380000 -e7 0x2380000
+
+clean:
+	@rm -rf build_ressources

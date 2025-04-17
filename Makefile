@@ -46,13 +46,13 @@ export RANLIB   :=      $(PREFIX)gcc-ranlib
 #---------------------------------------------------------------------------------
 
 #             <-- Change to EU or JP if required
-REGION := NA
-ROM := rom.nds
+REGION := EU
+ROM := build_ressources/rom_with_ressource.nds
 ROM_OUT := out.nds
 
 TARGET		:=	out
 BUILD		:=	build
-SOURCES		:=	src src/cot
+SOURCES		:=	src src/cot src/smalllib
 INCLUDES	:=	include pmdsky-debug/headers
 OPT_LEVEL := -O2
 

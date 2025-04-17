@@ -6,8 +6,9 @@
 .nds
 .include "symbols.asm"
 
-.open "overlay29.bin", overlay29_start
-    .org GetMovePower
-        // Remove the comment below to enable this example
-        // b CustomGetMovePower
+.open "overlay11.bin", overlay11_start
+    .org FrameHookStart
+    .area 0x4
+        bl OnEachFrame
+    .endarea
 .close

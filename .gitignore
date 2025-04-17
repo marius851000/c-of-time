@@ -9,3 +9,8 @@ out.asm
 *.nds.skytemple
 
 symbols/generated_*.ld
+
+tool/model_convert/target
+rom_true_base.nds
+build/
+build_ressources/
