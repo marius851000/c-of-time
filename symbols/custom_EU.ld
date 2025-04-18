@@ -8,7 +8,7 @@ ScriptMenuUpdateDefaultCase = 0x022E7238;
 ScriptMenuUpdateFinalize = 0x022E7798;
 IS_BASE_GAME_MENU_FINISHED = 0x023257DC;
 
-ENGINE_DISPLAY_INFO = 0x020091c8;
+ENGINE_DISPLAY_INFO = 0x022a40ec;
 
 # Hook at the start of the frame, when it’s safe to write to the VRAM
 FrameHookStart = 0x022e9c4c;
@@ -33,6 +33,8 @@ PreprocessStringFromIdCallsite = 0x020396FC;
 ProcessWTEWrapper = 0x0201e1c8;
 DoSomethingOn3dAllocAndClearInput = 0x0201e1d8;
 
+WhereVanillaSetBG0APriority = 0x02077c24;
+
 
 /* !file ram */
 
@@ -53,3 +55,7 @@ GEOM_COMM_PLTT_BASE = 0x40004AC;
 GEOM_COMM_MTX_MULT_3x3 = 0x4000468;
 
 GeomSetTexImageParam = 0x0201e530;
+
+BG0CNT_A = 0x04000008;
+
+BG0_A_PRIORITY = 0x022a410c;

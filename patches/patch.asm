@@ -6,6 +6,13 @@
 .nds
 .include "symbols.asm"
 
+.open "arm9.bin", arm9_start
+    .org WhereVanillaSetBG0APriority
+    .area 0x4
+        mov r0, r1 ; essentially no-op
+    .endarea
+.close
+
 .open "overlay11.bin", overlay11_start
     .org FrameHookStart
     .area 0x4

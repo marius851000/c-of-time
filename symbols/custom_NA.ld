@@ -8,7 +8,7 @@ ScriptMenuUpdateDefaultCase = 0x022E68F8;
 ScriptMenuUpdateFinalize = 0x022E6E58;
 IS_BASE_GAME_MENU_FINISHED = 0x02324C9C;
 
-ENGINE_DISPLAY_INFO = 0x022A37AC; # EU: 0x020091c8
+ENGINE_DISPLAY_INFO = 0x022A37AC; # EU: 0x022a40ec
 
 # Hook at the start of the frame, when it’s safe to write to the VRAM
 FrameHookStart = 0x022e930c; # EU: 0x022e9c4c
