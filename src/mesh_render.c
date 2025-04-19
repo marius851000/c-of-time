@@ -26,6 +26,10 @@ void initializeCustom3D() {
     GEOM_COMM_MTX_LOAD_4x4 = -0x1000;
     GEOM_COMM_MTX_LOAD_4x4 = 0x0;
 
+    GEOM_COMM_MTX_TRANS = 0;
+    GEOM_COMM_MTX_TRANS = 0;
+    GEOM_COMM_MTX_TRANS = -0x1000;
+
     /*GEOM_COMM_MTX_SCALE = 0x1000;
     GEOM_COMM_MTX_SCALE = 0x1000;
     GEOM_COMM_MTX_SCALE = 0x1000;*/
@@ -149,7 +153,7 @@ void TestDrawMesh() {
 
     GEOM_COMM_MTX_TRANS = 0;
     GEOM_COMM_MTX_TRANS = 0;
-    GEOM_COMM_MTX_TRANS = -0x1000+test_trans*8;
+    GEOM_COMM_MTX_TRANS = test_trans*6;
 
     GEOM_COMM_MTX_SCALE = (0x1 << 12);
     GEOM_COMM_MTX_SCALE = (0x1 << 12);
@@ -158,7 +162,7 @@ void TestDrawMesh() {
     doYRot(test_trans * 8);
 
 
-    GEOM_COMM_POLYGON_ATTR = POLY_ALPHA(31) | POLY_CULL_FRONT | POLY_MODULATION;
+    GEOM_COMM_POLYGON_ATTR = POLY_ALPHA(31) | POLY_CULL_BACK | POLY_MODULATION;
 
     GeomSetTexImageParam(2, 0, 3, 3, 0, 0, 0, 0x11000);
     GEOM_COMM_PLTT_BASE = 0x400 / 4;
