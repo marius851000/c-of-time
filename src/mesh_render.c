@@ -32,13 +32,13 @@ void initializeCustom3D() {
     GEOM_COMM_MTX_LOAD_4x4 = -0x1000;
     GEOM_COMM_MTX_LOAD_4x4 = 0x0;
 
-    GEOM_COMM_MTX_TRANS = (CAMERA_INFO[0].camera_top_left_position.x << 4) + (128 << 4);
+    GEOM_COMM_MTX_TRANS = (CAMERA_INFO[0].camera_top_left_position.x << 4) + (128 << 4) + (1 << 4); // Why do I need to manually patch this off-by-one thing? Not a problem in the y coordinate
     GEOM_COMM_MTX_TRANS = (CAMERA_INFO[0].camera_top_left_position.y << 4) + (96 << 4);
     GEOM_COMM_MTX_TRANS = -0x1000;
 
-    /*GEOM_COMM_MTX_SCALE = 0x1000;
-    GEOM_COMM_MTX_SCALE = 0x1000;
-    GEOM_COMM_MTX_SCALE = 0x1000;*/
+    GEOM_COMM_MTX_SCALE = -0x1000;
+    GEOM_COMM_MTX_SCALE = -0x1000;
+    GEOM_COMM_MTX_SCALE = -0x1000;
 
 
 
