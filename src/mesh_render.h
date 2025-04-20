@@ -1,10 +1,7 @@
 #ifndef _MESH_RENDER_H
 #define _MESH_RENDER_H
 
-#include "extern.h"
-#include "smalllib/libnds_videoGL.h"
-#include "smalllib/libnds_dma.h"
-#include "smalllib/fixed_point_math.h"
+#include <pmdsky.h>
 
 void initializeCustom3D();
 void finaliseCustom3d();

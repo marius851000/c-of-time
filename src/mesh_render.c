@@ -1,6 +1,12 @@
 // The 3D engine use signed fixed point on 12 bit numbers
 #include "mesh_render.h"
 
+#include "extern.h"
+#include "smalllib/libnds_videoGL.h"
+#include "smalllib/libnds_dma.h"
+#include "smalllib/fixed_point_math.h"
+
+
 // camera default to 0, 0, 0 pointing toward positive depth
 void initializeCustom3D() {
     // Use a custom projection matrix
@@ -26,8 +32,8 @@ void initializeCustom3D() {
     GEOM_COMM_MTX_LOAD_4x4 = -0x1000;
     GEOM_COMM_MTX_LOAD_4x4 = 0x0;
 
-    GEOM_COMM_MTX_TRANS = 0;
-    GEOM_COMM_MTX_TRANS = 0;
+    GEOM_COMM_MTX_TRANS = (CAMERA_INFO[0].camera_top_left_position.x << 4) + (128 << 4);
+    GEOM_COMM_MTX_TRANS = (CAMERA_INFO[0].camera_top_left_position.y << 4) + (96 << 4);
     GEOM_COMM_MTX_TRANS = -0x1000;
 
     /*GEOM_COMM_MTX_SCALE = 0x1000;

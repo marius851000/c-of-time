@@ -3,6 +3,8 @@
 #include <pmdsky.h>
 #include <cot.h>
 
+#include "smalllib/camera_info_export.h"
+
 // Store wether some background should be disable, per-screen
 struct EngineDisplayInfo {
     bool disable_bg0;
@@ -26,12 +28,13 @@ void ProcessWTEWrapper(struct wte_handle *wte_ref,undefined4 dest_vram_offset,un
 void DoSomethingOn3dAllocAndClearInput(void **wte_ref);
 
 // camera stuff
-extern struct vec2_int CAMERA_TOP_LEFT_COORD;
+extern struct camera_information CAMERA_INFO[2];
 
 // 3d engine stuff
 volatile extern int GEOM_COMM_BEGIN_VTXS;
 volatile extern int GEOM_COMM_END_VTXS;
 volatile extern int GEOM_COMM_VTX_16;
+volatile extern int GEOM_COMM_VTX_XY;
 volatile extern int GEOM_COMM_MTX_PUSH;
 volatile extern int GEOM_COMM_MTX_POP;
 volatile extern int GEOM_COMM_MTX_SCALE;
