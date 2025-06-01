@@ -133,7 +133,7 @@ void testLoadData() {
     struct wte_handle wte_ref;
     LoadWteFromRom(&wte_ref, "/CUSTOM/VRAM/sphetex.wte", 0);
     ProcessWTEWrapper(&wte_ref, 0x11000, 0x4, 0);
-    DoSomethingOn3dAllocAndClearInput(&wte_ref.content);
+    DelayWteFree(&wte_ref);
 
     LoadFileFromRom(&COMMAND_BUFFER, "CUSTOM/MODEL/sphere.fifo", 0);
     // OUI, je connais le C-A-C-H-E :) (bon, surtout libnds)

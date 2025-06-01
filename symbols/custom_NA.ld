@@ -31,7 +31,6 @@ PreprocessStringFromIdCallsite = 0x02039400;
 
 
 ProcessWTEWrapper = 0x0201e12c; #EU: 0x0201e1c8;
-DoSomethingOn3dAllocAndClearInput = 0x0201e13c; #EU: 0x0201e1d8;
 
 /* !file ram */
 

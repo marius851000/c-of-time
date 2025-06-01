@@ -17,15 +17,12 @@ extern struct EngineDisplayInfo ENGINE_DISPLAY_INFO[2];
 
 
 
-
-
 volatile extern int16_t BG0CNT_A;
 volatile extern uint16_t BG0_A_PRIORITY;
 
 
 // texture loading related functions
 void ProcessWTEWrapper(struct wte_handle *wte_ref,undefined4 dest_vram_offset,undefined4 palette_high_byte, undefined4 palette_low_byte);
-void DoSomethingOn3dAllocAndClearInput(void **wte_ref);
 
 // camera stuff
 extern struct camera_information CAMERA_INFO[2];
@@ -46,6 +43,10 @@ volatile extern int GEOM_COMM_COLOR;
 volatile extern int GEOM_COMM_MTX_LOAD_4x4;
 volatile extern int GEOM_COMM_PLTT_BASE;
 volatile extern int GEOM_COMM_MTX_MULT_3x3;
+
+// VRAM stuff
+
+volatile extern uint8_t VRAMCNT_B;
 
 // Not really extern, defined in an asm file
 // copied from libnds

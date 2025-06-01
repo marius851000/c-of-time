@@ -19,6 +19,8 @@ __attribute__((used)) void OnEachFrame() {
   BG0_A_PRIORITY = 0x3;
 
   ENGINE_DISPLAY_INFO[0].disable_bg2 = true;
+
+  //VRAMCNT_B = 0b10000111; // texture, slot 1
   /*ENGINE_DISPLAY_INFO[0].disable_bg3 = true;*/
 
   //TestDrawMesh();

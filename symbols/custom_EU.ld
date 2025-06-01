@@ -31,7 +31,9 @@ PreprocessStringFromIdCallsite = 0x020396FC;
 
 
 ProcessWTEWrapper = 0x0201e1c8;
-DoSomethingOn3dAllocAndClearInput = 0x0201e1d8;
+CallerToPerformedCopyVRAMForSpriteVRAM = 0x0201bf98;
+ResetCopyToSpriteVRAMOrders = 0x0201acac;
+FunctionThatWillSetObjs = 0x0200b66c;
 
 WhereVanillaSetBG0APriority = 0x02077c24;
 
@@ -58,6 +60,8 @@ GEOM_COMM_MTX_MULT_3x3 = 0x4000468;
 GeomSetTexImageParam = 0x0201e530;
 
 BG0CNT_A = 0x04000008;
+
+VRAMCNT_B = 0x04000241;
 
 BG0_A_PRIORITY = 0x022a410c;
 
