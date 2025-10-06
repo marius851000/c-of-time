@@ -10,4 +10,11 @@
     .org GetMovePower
         // Remove the comment below to enable this example
         // b CustomGetMovePower
+    .org ObjectRenderHook // 022e2198
+        bl ObjectRenderHookTrampoline
+.close
+
+.open "arm9.bin", arm9_start
+    .org InitSomeGraphicStuffHook // 02027174
+        bl InitSomeGraphicStuffTrampoline
 .close

@@ -22,3 +22,14 @@ ShowKeyboardTypeCase3 = 0x02036C10;
 ShowKeyboardTypeDefaultCase = 0x02036D3C;
 ShowKeyboardReturn = 0x02036FA8;
 PreprocessStringFromIdCallsite = 0x020396FC;
+
+/* mine */
+
+/* !file arm9 */
+InitSomeGraphicStuffHook = 0x02027174;
+RenderAndAdvanceWANAnimation = 0x0201cff8;
+RenderAlert = 0x0202a2dc;
+ALERT_ANIMATION_SUB = 0x022ab6bc;
+
+/* !file overlay29 */
+ObjectRenderHook = 0x022e2198;
