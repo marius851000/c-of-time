@@ -22,28 +22,43 @@ __attribute__((used)) int CustomGetMovePower(struct entity* entity, struct move*
 void RenderAndAdvanceWANAnimation(struct animation_control*);
 void RenderAlert();
 
-static int CUSTOM_SPRITE_ID = 0;
 static struct animation_control ANIMATION_CONTROL;
-extern struct animation_control ALERT_ANIMATION_SUB;
 
 __attribute((used)) void TestCustomLoadWAN() {
-    CUSTOM_SPRITE_ID = LoadWanTableEntry(WAN_TABLE,"rom0:FONT/alert.wan",0);
+    //int custom_sprite_id = LoadWanTableEntry(WAN_TABLE,"rom0:FONT/alert.wan",0);
+    int custom_sprite_id = LoadWanTableEntryFromPack(WAN_TABLE, 3, 269, 0xf, 0);
     InitAnimationControlWithSet(&ANIMATION_CONTROL);
-    SetSpriteIdForAnimationControl(&ANIMATION_CONTROL,CUSTOM_SPRITE_ID);
+    SetSpriteIdForAnimationControl(&ANIMATION_CONTROL,custom_sprite_id);
     SetAnimationForAnimationControl(&ANIMATION_CONTROL,0,0,0x3e4,0xd,0,1,0);
     //ANIMATION_CONTROL.field23_0x38 = 0;
     //ANIMATION_CONTROL.field1_0x2 = ANIMATION_CONTROL.field1_0x2 | 2;
 
     ANIMATION_CONTROL.field10_0x1c = 100; // x coord
-    ANIMATION_CONTROL.field11_0x1e = 100; // y coord
+    ANIMATION_CONTROL.field11_0x1e = 50; // y coord
     //ANIMATION_CONTROL.field1_0x2 = ANIMATION_CONTROL.field1_0x2 & 0xfffd;
 }
 
+static int COUNTER = 0;
+static int SPRITE_ID_IN_WAN_TABLE = 0;
+
 __attribute((used)) void TestCustomRenderWAN() {
-    for (int a = 0; a < 10; a++) {
-        ANIMATION_CONTROL.field10_0x1c = 100 + a * 5;
-        ANIMATION_CONTROL.field11_0x1e = 100 + a * 5;
-        RenderAndAdvanceWANAnimation(&ANIMATION_CONTROL);
+
+    if (COUNTER > 0) {
+        DeleteWanTableEntry(WAN_TABLE, SPRITE_ID_IN_WAN_TABLE);
     }
-    //RenderAlert();
+
+    if (COUNTER >= 601) {
+        COUNTER = 1;
+    } else {
+        COUNTER += 2;
+    }
+
+    SPRITE_ID_IN_WAN_TABLE = LoadWanTableEntryFromPack(WAN_TABLE, 2, COUNTER-1, 0xf, 0);
+    InitAnimationControlWithSet(&ANIMATION_CONTROL);
+    SetSpriteIdForAnimationControl(&ANIMATION_CONTROL,SPRITE_ID_IN_WAN_TABLE);
+    SetAnimationForAnimationControl(&ANIMATION_CONTROL,0,0,0x3e4,0xd,0,1,0);
+    ANIMATION_CONTROL.field10_0x1c = 50;
+    ANIMATION_CONTROL.field11_0x1e = 50;
+    RenderAndAdvanceWANAnimation(&ANIMATION_CONTROL);
+
 }
