@@ -2,7 +2,7 @@
 InitSomeGraphicStuffTrampoline:
     push {r3, lr}
 
-    bl TestCustomLoadWAN
+    // bl TestCustomLoadWAN
 
     pop {r3, lr}
     mov r4, #1
@@ -12,10 +12,9 @@ InitSomeGraphicStuffTrampoline:
 ObjectRenderHookTrampoline:
     push {lr}
 
+    bl MaybeRenderObjectAndMonster
     bl TestCustomRenderWAN
 
     pop {lr}
-
-    sub sp, sp, #0xc
 
     bx lr

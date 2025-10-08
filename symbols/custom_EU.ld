@@ -28,8 +28,15 @@ PreprocessStringFromIdCallsite = 0x020396FC;
 /* !file arm9 */
 InitSomeGraphicStuffHook = 0x02027174;
 RenderAndAdvanceWANAnimation = 0x0201cff8;
+RenderAnimationControl = 0x0201c660;
+SwitchAnimationControlToNextFrame = 0x0201c4f4;
 RenderAlert = 0x0202a2dc;
 ALERT_ANIMATION_SUB = 0x022ab6bc;
 
 /* !file overlay29 */
-ObjectRenderHook = 0x022e2198;
+ObjectRenderHook = 0x022eaaac;
+MaybeRenderObjectAndMonster = 0x022e2194;
+PaletteAllocatorMarkAsUsed = 0x022df338;
+PaletteAllocatorFindEmpty = 0x022df2a8;
+AllocateGeneralSpriteMemoryForMonster = 0x022e2958;
+MarkSpriteMemoryAsUsedForGeneralMonster = 0x022e2804;
