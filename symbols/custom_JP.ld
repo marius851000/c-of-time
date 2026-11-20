@@ -17,6 +17,13 @@ ApplyItemEffectJumpAddr = 0x0231DFE0;
 
 /* Add your own symbols here... */
 
+/* !file overlay29 */
+PrintDialogue = 0x234E590;
+YesNoMenuWithStringPtr = 0x234E748;
+DungeonSetAnimation = 0x2305D80;
+InteractWithSecretBazaarNpcCallsite = 0x22F71C4;
+DungeonTurnCallsite = 0x22E11B4;
+
 /* !file arm9 */
 ShowKeyboardTypeCase3 = 0x02036C34;
 ShowKeyboardTypeDefaultCase = 0x02036D54;
