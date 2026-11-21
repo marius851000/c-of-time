@@ -46,7 +46,7 @@ export RANLIB   :=      $(PREFIX)gcc-ranlib
 #---------------------------------------------------------------------------------
 
 #             <-- Change to EU or JP if required
-REGION := NA
+REGION := EU
 ROM := rom.nds
 ROM_OUT := out.nds
 
@@ -216,7 +216,7 @@ $(FS_PATCH_FOLDER)/CUSTOM/DNSCRPT/%.dnscrpt: fs_patch_source/dunscript/%.dunscri
 RESSOURCES_TO_INCLUDE = $(DUNSCRIPT_DEST)
 
 
-$(ROM_WITH_RESSOURCES): $(RESSOURCES_TO_INCLUDE) $(ROM)
+$(ROM_WITH_RESSOURCES): $(RESSOURCES_TO_INCLUDE) $(ROM) $(FS_PATCH_FOLDER)
 	@rm -rf $(SCRATCH_ROM_FOLDER)
 	@mkdir -p $(SCRATCH_ROM_FOLDER)
 	ndstool -x $(ROM) -9 $(SCRATCH_ROM_FOLDER)/arm9.bin -7 $(SCRATCH_ROM_FOLDER)/arm7.bin -y9 $(SCRATCH_ROM_FOLDER)/y9.bin -y7 $(SCRATCH_ROM_FOLDER)/y7.bin -d $(SCRATCH_ROM_FOLDER)/data -y $(SCRATCH_ROM_FOLDER)/overlay -t $(SCRATCH_ROM_FOLDER)/banner.bin -h $(SCRATCH_ROM_FOLDER)/header.bin

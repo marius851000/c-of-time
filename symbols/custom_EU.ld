@@ -17,6 +17,14 @@ ApplyItemEffectJumpAddr = 0x0231D574;
 
 /* Add your own symbols here... */
 
+/* !file overlay29 */
+PrintDialogue = 0x0234df04; # is called "DungeonModeMessage?" in my EU Ghidra. Likely a label assigned by me (marius) a long while ago.
+YesNoMenuWithStringPtr = 0x0234e0bc;
+DungeonSetAnimation = 0x0230525c;
+InteractWithSecretBazaarNpcCallsite = 0x022f6584;
+DungeonTurnCallsite = 0x022e0458;
+
+
 /* !file arm9 */
 ShowKeyboardTypeCase3 = 0x02036C10;
 ShowKeyboardTypeDefaultCase = 0x02036D3C;

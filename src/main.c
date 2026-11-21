@@ -23,22 +23,24 @@ __attribute__((used)) int CustomGetMovePower(struct entity* entity, struct move*
 
 // You can add other patches here...
 
-void __attribute__((used)) CustomInteractWithSecretBazaarNpc(undefined4 unknown, struct entity* entity) {
-    if (!IsMonster(entity)) {
-        return InteractWithSecretBazaarNpc(unknown, entity);
+void __attribute__((used)) CustomInteractWithSecretBazaarNpc(struct entity* user, struct entity* shopkeeper) {
+    if (!IsMonster(shopkeeper)) {
+        InteractWithSecretBazaarNpc(user, shopkeeper);
+        return;
     }
 
     // check if we aren’t already in a secret bazaar
     if (IsSecretBazaar()) {
-        return InteractWithSecretBazaarNpc(unknown, entity);
+        InteractWithSecretBazaarNpc(user, shopkeeper);
+        return;
     }
 
-    struct monster* monster = entity->info.monster;
+    struct monster* monster = shopkeeper->info.monster;
     
     
     char script_name_buffer[0x30];
     snprintf(script_name_buffer, 0x30, "dun_%03d_floor_%02d/npc/%03d", DUNGEON_PTR->id.val, DUNGEON_PTR->floor, monster->statuses.monster_behavior.val);
-    RunDungeonScript(script_name_buffer, entity);
+    RunDungeonScript(script_name_buffer, shopkeeper);
 }
 
 __attribute__((used)) void HookDungeonTurn(bool firstTurn) {    
