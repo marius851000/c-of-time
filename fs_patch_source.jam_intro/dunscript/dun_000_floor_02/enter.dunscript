@@ -1,0 +1,27 @@
+wait 10
+# pseudo-lookaround
+playsfx 8963
+setdirection 1 UPRIGHT
+wait 15
+setdirection 1 UP
+wait 4
+setdirection 1 UPLEFT
+wait 15
+setdirection 1 UP
+wait 4
+
+wait 30
+
+dialoguewait 1 1 "[CS:Q]Ceruledge[CR]: Finally, a new floor!"
+dialoguewait 1 0 "[CS:Q]Ceruledge[CR]: Guess… there’s nowhere to go but\nup?"
+
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+
+wait 20
+setnextfloorflag
+
+
+end 0

@@ -1,0 +1,236 @@
+# flag 140: first visit done
+# flag 141: second visit done
+# flag 150: object gotten (for proceeding to 2F)
+
+setdirection 240 UP
+checktalkflag 140
+jumpne @first
+checktalkflag 141
+jumpne @second
+jump @third
+end 1
+
+first:
+settalkflag 140 1
+dialoguewait 1 0 "[CS:G]Ceruledge[CR]: Ok, here we are... Master Gambit\nsaid a treasure is to be found here."
+walk 1 UPRIGHT
+displayaction
+walk 1 UPRIGHT
+displayaction
+walk 1 UP
+walk 240 LEFT
+displayaction
+walk 1 UP
+walk 240 LEFT
+displayaction
+walk 1 UP
+walk 240 LEFT
+displayaction
+walk 1 UP
+
+walk 240 LEFT
+displayaction
+setdirection 240 DOWN
+wait 30
+
+initdungeonrng 9
+usemove 1 1
+displayaction
+initdungeonrng 10
+setmonstermove 240 2 62 10
+usemove 240 2
+displayaction
+initdungeonrng 12
+usemove 1 0
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UPRIGHT
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+
+dialoguewait 1 0 "[CS:G]Ceruledge[CR]: I better not disappoint. Let’s make\nthis quick."
+
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+wait 30
+setnextfloorflag
+end 0
+
+second:
+dialoguewait 1 15 "[CS:G]Ceruledge[CR]: ... Wait. What?"
+dialoguewait 1 15 "[CS:G]Ceruledge[CR]: Why am I back on 1F???"
+jump @rush_to_stair_room
+
+second_part2:
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+wait 10
+setnextfloorflag
+settalkflag 141 1
+end 1
+
+third:
+dialoguewait 1 15 "[CS:G]Ceruledge[CR]: This is NOT funny."
+wait 50
+dialoguewait 1 4 "[CS:G]Ceruledge[CR]: Maybe it’s a trap?"
+wait 20
+dialoguewait 1 4 "[CS:G]Ceruledge[CR]: ... I had an odd feeling about that\nstair room..."
+dialoguewait 1 4 "[CS:G]Ceruledge[CR]: I'll take a better look."
+jump @rush_to_stair_room
+
+third_part2:
+setdirection 1 DOWNRIGHT
+wait 40
+walk 1 DOWNRIGHT
+displayaction
+dialoguewait 1 0 "[CS:G]Ceruledge[CR]: There is indeed a path over there."
+walk 1 DOWNRIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 DOWNRIGHT
+displayaction
+walk 1 DOWN
+displayaction
+walk 1 DOWN
+displayaction
+walk 1 DOWN
+displayaction
+walk 1 LEFT
+displayaction
+walk 1 DOWN
+displayaction
+walk 1 DOWN
+displayaction
+dialoguewait 1 12 "[CS:G]Ceruledge[CR]: Is that a... Lost Loot? That’s worth\nat least eight times more than my meagre\nknight’s salary."
+walk 1 DOWN
+displayaction
+walk 1 DOWNRIGHT
+displayaction
+walk 1 DOWN
+displayaction
+dialoguewait 1 4 "[CS:G]Ceruledge[CR]: Is that the treasure King Gambit\nwas looking for?"
+wait 50
+dialoguewait 1 0 "[CS:G]Ceruledge[CR]: Either way... Surely, no one would\nmind if I just..."
+pickitem 1
+settalkflag 150 1
+wait 20
+dialoguewait 1 0 "[CS:G]Ceruledge[CR]: Anyways. Let’s make this quick."
+wait 10
+walk 1 UP
+displayaction
+walk 1 UPLEFT
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 RIGHT
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+walk 1 UPLEFT
+displayaction
+walk 1 UP
+displayaction
+walk 1 UP
+displayaction
+setnextfloorflag
+end 1
+
+rush_to_stair_room:
+walk 1 UPRIGHT
+walk 1 UPRIGHT
+displayaction
+walk 240 LEFT
+walk 1 UP
+walk 1 UP
+displayaction
+walk 1 UP
+walk 1 UP
+walk 240 LEFT
+displayaction
+walk 1 UP
+walk 1 UP
+walk 240 UPLEFT
+displayaction
+setdirection 1 RIGHT
+
+initdungeonrng 9
+usemove 1 1
+initdungeonrng 10
+usemove 1 1
+
+walk 1 UP
+walk 1 UPRIGHT
+displayaction
+walk 1 UP
+walk 1 UP
+displayaction
+walk 1 UP
+walk 1 UP
+displayaction
+walk 1 UP
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+walk 1 RIGHT
+displayaction
+walk 1 RIGHT
+walk 1 RIGHT
+displayaction
+checktalkflag 141
+jumpne @second_part2
+jump @third_part2
